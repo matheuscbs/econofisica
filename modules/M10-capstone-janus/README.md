@@ -16,4 +16,3 @@ Roadmap: lei assinada de resposta à variância → alocação defasada + hedge.
 - [Overview do módulo](study/overview.md)
 - [Resumo executivo](study/resumo.md)
 - [Guia completo](study/guia-completo.md)
-- [Assets (mídia local)](study/ASSETS.md)

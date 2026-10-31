@@ -20,4 +20,3 @@ Roadmap: convenções → no-arb → local vol → Heston → jumps → sticky F
 - [Overview do módulo](study/overview.md)
 - [Resumo executivo](study/resumo.md)
 - [Guia completo](study/guia-completo.md)
-- [Assets (mídia local)](study/ASSETS.md)

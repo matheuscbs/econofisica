@@ -16,4 +16,3 @@ Roadmap: beta estacionário por ambiente → classificador frágil (R+) / antifr
 - [Overview do módulo](study/overview.md)
 - [Resumo executivo](study/resumo.md)
 - [Guia completo](study/guia-completo.md)
-- [Assets (mídia local)](study/ASSETS.md)

@@ -187,27 +187,6 @@ def import_study(vault: Path) -> int:
             write_text(dest, out)
             print(f"  study  {mid} {dest_name:16} ← {sname[:50]}")
             n += 1
-
-        # placeholder for media (not committed)
-        assets_readme = study_dir / "ASSETS.md"
-        write_text(
-            assets_readme,
-            f"""# Assets do módulo {mid}
-
-Mídia gerada no vault (podcast, vídeo, slides, PDF) **não entra no Git** (~1.3 GB no total).
-
-Guarde localmente ou use Git LFS se for publicar depois:
-
-| Tipo | Origem no vault |
-|------|-----------------|
-| podcast `.m4a` | `modulos/{mid}*/assets/` |
-| vídeo `.mp4` | idem |
-| slides `.pptx` / `.pdf` | idem |
-| stories `.png` | idem |
-
-No curso open-source preferimos **animações Manim** geradas a partir dos labs (reproduzíveis).
-""",
-        )
     return n
 
 
@@ -256,7 +235,6 @@ def update_module_readmes() -> None:
                 ("overview.md", "Overview do módulo"),
                 ("resumo.md", "Resumo executivo"),
                 ("guia-completo.md", "Guia completo"),
-                ("ASSETS.md", "Assets (mídia local)"),
             ]:
                 if (study / name).exists():
                     lines.append(f"- [{label}](study/{name})")

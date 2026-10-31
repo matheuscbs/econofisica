@@ -17,4 +17,3 @@ Roadmap: forwards → swaps → opções de taxa.
 - [Overview do módulo](study/overview.md)
 - [Resumo executivo](study/resumo.md)
 - [Guia completo](study/guia-completo.md)
-- [Assets (mídia local)](study/ASSETS.md)

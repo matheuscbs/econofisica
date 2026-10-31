@@ -34,7 +34,6 @@ O GBM é o modelo padrão de trajetória: log-preço gaussiano, preço log-norma
 - [Overview do módulo](study/overview.md)
 - [Resumo executivo](study/resumo.md)
 - [Guia completo](study/guia-completo.md)
-- [Assets (mídia local)](study/ASSETS.md)
 
 ### Labs
 
