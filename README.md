@@ -27,8 +27,8 @@ Detalhes: [`docs/curriculum.md`](docs/curriculum.md) · [`docs/trilhas.md`](docs
 
 | # | Módulo | Conteúdo | Lab |
 |---|--------|----------|-----|
-| [M01](modules/M01-fundamentos) | Fundamentos | 5 aulas + study | próximo |
-| [M02](modules/M02-dinamica-gregas) | Dinâmica e gregas | 3 aulas + study | **Lab 01 + Manim** |
+| [M01](modules/M01-fundamentos) | Fundamentos | 5 aulas + study | **Lab 01 vendedor sem hedge** |
+| [M02](modules/M02-dinamica-gregas) | Dinâmica e gregas | 3 aulas + study | **Lab 01 GBM + Manim** |
 | [M03](modules/M03-curva-juros) | Curva de juros | 3 aulas + study | — |
 | [M04](modules/M04-superficie-vol) | Superfície de vol | 6 aulas + study | — |
 | [M05](modules/M05-econofisica-entropia) | Entropia e risco | 4 aulas + study | — |
@@ -38,31 +38,26 @@ Detalhes: [`docs/curriculum.md`](docs/curriculum.md) · [`docs/trilhas.md`](docs
 | [M09](modules/M09-labs-beta-fragilidade) | Beta / R+/R− | 2 aulas + study | — |
 | [M10](modules/M10-capstone-janus) | Capstone Janus | 2 aulas + study | — |
 
-## Começar agora — Lab 01 (GBM + Monte Carlo)
+## Começar agora
+
+Índice de labs: [`docs/LABS.md`](docs/LABS.md)
+
+### 1) M01 — Vendedor sem hedge (*wait-and-see*)
 
 ```bash
-# Python 3.12+ recomendado (Manim)
-python3.12 -m venv .venv
-source .venv/bin/activate
+python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-PYTHONPATH=src python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
-
-# Animações
-manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py GBMPathsScene
-manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py DensityConvergenceScene
-manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py MonteCarloConvergenceScene
-manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py Lab01Full
+PYTHONPATH=src python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
+manim -pql modules/M01-fundamentos/labs/01-vendedor-sem-hedge/manim/scenes.py NakedSellerPnLScene
 ```
 
-Você vai:
-1. Calcular média/variância teóricas do log-preço e de \(S_T\)
-2. Avaliar a densidade log-normal
-3. Simular trajetórias discretas do GBM
-4. Validar convergência Monte Carlo para \(N \in \{10^3, 10^4, 10^5\}\)
-5. Animar paths, densidade e convergência com Manim
+### 2) M02 — GBM + convergência Monte Carlo
 
-Guia: [`labs/01-gbm-monte-carlo`](modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo) · leitura: [`RESULTS.md`](modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/RESULTS.md)
+```bash
+PYTHONPATH=src python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
+manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py Lab01Full
+```
 
 ## Estrutura do repositório
 

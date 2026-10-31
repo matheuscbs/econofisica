@@ -4,33 +4,33 @@
 
 ## Lições
 
-1. Mapa do curso  
-2. Preço mínimo (no-arbitrage)  
-3. Delta neutro  
-4. Lema de Itô  
-5. Mundo risco-neutro e Black–Scholes  
+| Aula | Tema |
+|------|------|
+| [A01](lessons/A01-mapa-do-curso-de-precificacao-a-alocacao-por-regime.md) | Mapa do curso |
+| [A02](lessons/A02-preco-minimo-de-uma-opcao-o-que-o-mercado-nao-pode-deixar-de-pagar.md) | Preço mínimo (no-arbitrage) |
+| [A03](lessons/A03-delta-neutro-transformar-opiniao-direcional-em-risco-controlado.md) | Delta neutro |
+| [A04](lessons/A04-lema-de-ito-por-que-o-hedge-continuo-gera-um-termo-extra-de-variancia.md) | Lema de Itô |
+| [A05](lessons/A05-mundo-risco-neutro-e-blackscholes-precificar-sem-prever-o-drift.md) | Mundo risco-neutro e BSM |
 
-## Status
+## Labs
 
-Roadmap. Próximo lab planejado: BSM fechado + IV invertida.
+| Lab | Status |
+|-----|--------|
+| [01 — Vendedor sem hedge](labs/01-vendedor-sem-hedge) | **ativo** — cauda de perdas *wait-and-see* |
+| 02 — Delta hedge dinâmico | próximo |
+| 03 — BSM + IV | planejado |
+
+## Estudo
+
+- [Overview](study/overview.md) · [Resumo](study/resumo.md) · [Guia completo](study/guia-completo.md)
 
 ## Pré-requisitos
 
-Cálculo básico, esperança/variância, Python + NumPy.
+Esperança/variância, Python + NumPy. GBM detalhado também em [M02 Lab 01](../M02-dinamica-gregas/labs/01-gbm-monte-carlo).
 
-## Conteúdo importado
+## Ordem sugerida
 
-### Aulas
-
-- [A01-mapa-do-curso-de-precificacao-a-alocacao-por-regime](lessons/A01-mapa-do-curso-de-precificacao-a-alocacao-por-regime.md)
-- [A02-preco-minimo-de-uma-opcao-o-que-o-mercado-nao-pode-deixar-de-pagar](lessons/A02-preco-minimo-de-uma-opcao-o-que-o-mercado-nao-pode-deixar-de-pagar.md)
-- [A03-delta-neutro-transformar-opiniao-direcional-em-risco-controlado](lessons/A03-delta-neutro-transformar-opiniao-direcional-em-risco-controlado.md)
-- [A04-lema-de-ito-por-que-o-hedge-continuo-gera-um-termo-extra-de-variancia](lessons/A04-lema-de-ito-por-que-o-hedge-continuo-gera-um-termo-extra-de-variancia.md)
-- [A05-mundo-risco-neutro-e-blackscholes-precificar-sem-prever-o-drift](lessons/A05-mundo-risco-neutro-e-blackscholes-precificar-sem-prever-o-drift.md)
-
-### Estudo
-
-- [Overview do módulo](study/overview.md)
-- [Resumo executivo](study/resumo.md)
-- [Guia completo](study/guia-completo.md)
-- [Assets (mídia local)](study/ASSETS.md)
+1. Ler A02–A03  
+2. Rodar **Lab 01** (este módulo)  
+3. [M02 Lab 01](../M02-dinamica-gregas/labs/01-gbm-monte-carlo) se quiser aprofundar o motor GBM  
+4. Voltar para A04–A05 + próximo lab de hedge  
