@@ -42,21 +42,28 @@ Detalhes: [`docs/curriculum.md`](docs/curriculum.md) · [`docs/trilhas.md`](docs
 
 Índice de labs: [`docs/LABS.md`](docs/LABS.md)
 
-### 1) M01 — Vendedor sem hedge (*wait-and-see*)
+### Setup
 
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+pip install -e ".[dev,manim]"   # pacote instalável — sem PYTHONPATH
+# fallback: pip install -r requirements.txt && pip install -e .
+pytest -q
+```
 
-PYTHONPATH=src python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
+### 1) M01 — Vendedor sem hedge (*wait-and-see*)
+
+```bash
+python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
+# sim.npz gerado → Manim reutiliza (ou simula de novo se ausente)
 manim -pql modules/M01-fundamentos/labs/01-vendedor-sem-hedge/manim/scenes.py NakedSellerPnLScene
 ```
 
 ### 2) M02 — GBM + convergência Monte Carlo
 
 ```bash
-PYTHONPATH=src python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
-manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py Lab01Full
+python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
+manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py DensityConvergenceScene
 ```
 
 ## Estrutura do repositório

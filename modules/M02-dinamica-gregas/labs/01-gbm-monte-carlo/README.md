@@ -69,17 +69,11 @@ $$
 
 ## Como rodar
 
-Na raiz do repositório:
-
 ```bash
-pip install -r requirements.txt
-PYTHONPATH=src python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py
-```
-
-Opcional — salvar figuras em `outputs/`:
-
-```bash
-PYTHONPATH=src python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
+pip install -e ".[dev,manim]"
+python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
+# S_T via simulate_gbm_terminal (chunks); sim.npz para Manim
+# SoT: econofisica.labs.M02_GBM
 ```
 
 ## O que observar

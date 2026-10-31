@@ -29,8 +29,11 @@ M02 Lab 01  →  o motor GBM por baixo
 ## Convenção ao criar um lab novo
 
 1. Pasta `labs/NN-slug-kebab/`
-2. Parâmetros no topo de `run_lab.py` + `seed` fixa
-3. Importar de `src/econofisica` (não copiar GBM)
-4. `--plot` para PNG em `outputs/`
-5. Manim opcional, sem depender de LaTeX local
-6. Linkar no README do módulo + neste índice
+2. **SoT de parâmetros** em `src/econofisica/labs/<slug>.py` (`@dataclass` frozen)
+3. Importar de `src/econofisica` (não copiar GBM); preferir `simulate_gbm_terminal` quando só precisar de \(S_T\)
+4. `run_lab.py` salva `sim.npz` via `save_lab_npz`; Manim lê com `resolve_artifact_path` / `ECONOFISICA_ARTIFACT`
+5. `--plot` para PNG em `outputs/`
+6. Manim opcional, sem depender de LaTeX local
+7. Testes golden em `tests/` para fórmulas novas
+8. Linkar no README do módulo + neste índice
+9. Setup do aluno: `pip install -e .` (bootstrap de `src/` só como fallback)

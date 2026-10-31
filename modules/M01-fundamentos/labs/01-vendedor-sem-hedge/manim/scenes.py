@@ -1,29 +1,32 @@
 """
 Animações Manim — Lab M01.01 vendedor de call sem hedge.
 
-  manim -pql .../scenes.py PathsByMoneynessScene
+  pip install -e ".[manim]"
+  python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py   # gera sim.npz
+  export ECONOFISICA_ARTIFACT=outputs/lab-m01-vendedor-sem-hedge/sim.npz  # opcional
   manim -pql .../scenes.py NakedSellerPnLScene
-  manim -pql .../scenes.py LabM01SellerFull
 """
 
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 
 import numpy as np
 from manim import *
 
-_ROOT = Path(__file__).resolve().parents[5]
-_SRC = _ROOT / "src"
-if str(_SRC) not in sys.path:
-    sys.path.insert(0, str(_SRC))
+from econofisica.bootstrap import ensure_src_on_path
 
+_ROOT = Path(__file__).resolve().parents[5]
+ensure_src_on_path(_ROOT)
+
+from econofisica.artifacts import load_lab_npz, resolve_artifact_path  # noqa: E402
 from econofisica.gbm import simulate_gbm_paths  # noqa: E402
+from econofisica.labs import M01_VENDEDOR  # noqa: E402
 from econofisica.options import naked_short_call_pnl  # noqa: E402
 
-S0, K, MU, SIGMA, T, NSTEPS = 100.0, 100.0, 0.05, 0.20, 1.0, 252
-N_PATHS, PREMIO, SEED = 1000, 7.0, 42
+CFG = M01_VENDEDOR
+S0, K, MU, SIGMA, T, NSTEPS = CFG.S0, CFG.K, CFG.mu, CFG.sigma, CFG.T, CFG.nsteps
+N_PATHS, PREMIO, SEED = CFG.N, CFG.premio, CFG.seed
 
 BG = "#0f1419"
 BLUE = "#3d9cf0"
@@ -38,6 +41,10 @@ def _setup(scene: Scene) -> None:
 
 
 def _data():
+    art = resolve_artifact_path(CFG.artifact_path(_ROOT))
+    if art is not None:
+        data = load_lab_npz(art)
+        return data["paths"], data["ST"], data["pnl"]
     paths = simulate_gbm_paths(S0, MU, SIGMA, T, NSTEPS, N_PATHS, seed=SEED)
     ST = paths[:, -1]
     pnl = naked_short_call_pnl(ST, K, PREMIO)
@@ -74,7 +81,7 @@ class PathsByMoneynessScene(Scene):
             stroke_width=2.5,
         )
 
-        n_show = 60
+        n_show = min(60, paths.shape[0])
         curves = VGroup()
         for i in range(n_show):
             color = RED if ST[i] > K else BLUE
@@ -104,7 +111,6 @@ class NakedSellerPnLScene(Scene):
 
         _, ST, pnl = _data()
         lo, hi = float(np.percentile(pnl, 1)), float(np.percentile(pnl, 99.5))
-        # stretch left a bit for losses
         lo = min(lo, -40)
         axes = Axes(
             x_range=[lo, hi, (hi - lo) / 5],
@@ -180,7 +186,9 @@ class LabM01SellerFull(Scene):
             Text("3. pnl vendedor = prêmio − payoff", font_size=26, color=WHITE),
             Text("4. Ver a cauda de perdas → precisa de hedge", font_size=26, color=ORANGE),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.35)
-        self.play(LaggedStart(*[FadeIn(b, shift=RIGHT * 0.2) for b in bullets], lag_ratio=0.35))
+        self.play(
+            LaggedStart(*[FadeIn(b, shift=RIGHT * 0.2) for b in bullets], lag_ratio=0.35)
+        )
         self.wait(2.0)
         self.play(FadeOut(bullets))
 

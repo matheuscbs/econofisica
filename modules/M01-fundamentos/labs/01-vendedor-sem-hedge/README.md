@@ -39,16 +39,14 @@ P&L do vendedor naked: \(\text{pnl} = \text{prêmio} - \max(S_T-K,0)\).
 ## Como rodar
 
 ```bash
-# na raiz do repo
-source .venv/bin/activate   # se já criou
-pip install -r requirements.txt
-PYTHONPATH=src python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
+pip install -e ".[dev,manim]"
+python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
+# grava outputs/.../sim.npz (SoT: econofisica.labs.M01_VENDEDOR)
 ```
 
-Manim:
+Manim (reusa `sim.npz` se existir):
 
 ```bash
-export PYTHONPATH=src
 manim -pql modules/M01-fundamentos/labs/01-vendedor-sem-hedge/manim/scenes.py NakedSellerPnLScene
 manim -pql modules/M01-fundamentos/labs/01-vendedor-sem-hedge/manim/scenes.py PathsByMoneynessScene
 ```

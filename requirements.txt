@@ -2,6 +2,7 @@ numpy>=1.24
 matplotlib>=3.7
 jupyter>=1.0
 ipykernel>=6.25
+pytest>=7.0
 
 # Animações (Python >= 3.11 recomendado; use .venv com 3.12)
 manim>=0.18

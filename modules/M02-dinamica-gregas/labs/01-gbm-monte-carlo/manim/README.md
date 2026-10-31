@@ -1,43 +1,20 @@
-# Manim — Lab 01 GBM
-
-Animações pedagógicas dos resultados da simulação.
-
-## Setup
-
-Na raiz do repo (Python ≥ 3.11 recomendado; aqui usamos 3.12):
+# Manim — Lab M02.01 GBM
 
 ```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install manim   # ou: pip install -e ".[manim]"
-```
+pip install -e ".[manim]"
+python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py   # gera sim.npz
 
-Dependências de sistema: `ffmpeg`, `cairo` (já comuns via Homebrew).
-
-## Render
-
-```bash
-source .venv/bin/activate
-export PYTHONPATH=src
-
-# preview rápido (480p)
 manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py GBMPathsScene
-manim -pql .../scenes.py DensityConvergenceScene
-manim -pql .../scenes.py MonteCarloConvergenceScene
-manim -pql .../scenes.py Lab01Full
-
-# 1080p
-manim -pqh modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py Lab01Full
+manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py DensityConvergenceScene
+manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py MonteCarloConvergenceScene
+manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py Lab01Full
 ```
 
-Saída padrão: `media/videos/...` (gitignored). Copie os mp4 finais para `outputs/lab01-gbm/manim/` se quiser arquivar localmente.
-
-## Cenas
+SoT: `econofisica.labs.M02_GBM`. Density/convergência preferem `sim.npz` (S_T chunked) em vez de realocar 100k paths.
 
 | Cena | O que mostra |
 |------|----------------|
-| `GBMPathsScene` | Paths + E[S_t] + túnel ±2σ (usa σ=0.20 p/ visual) |
-| `DensityConvergenceScene` | Histograma S_T preenchendo a pdf (σ=0.02) |
-| `MonteCarloConvergenceScene` | Erro vs N em log–log + 1/√N |
-| `Lab01Full` | Intro + fórmulas + teaser de paths |
+| `GBMPathsScene` | Paths + E[S_t] + túnel ±2σ (`sigma_wide`) |
+| `DensityConvergenceScene` | Histograma S_T → pdf |
+| `MonteCarloConvergenceScene` | Erro vs N + 1/√N |
+| `Lab01Full` | Intro + fórmulas + teaser |

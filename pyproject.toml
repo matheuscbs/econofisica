@@ -17,8 +17,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["jupyter>=1.0", "ipykernel>=6.25"]
+dev = ["jupyter>=1.0", "ipykernel>=6.25", "pytest>=7.0"]
 manim = ["manim>=0.18"]
+test = ["pytest>=7.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
 
 [project.urls]
 Homepage = "https://github.com/matheuscbs/econofisica"

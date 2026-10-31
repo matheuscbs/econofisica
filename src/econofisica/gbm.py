@@ -61,6 +61,15 @@ def lognormal_pdf(
     return pdf
 
 
+def _validate_sim(nsteps: int, N: int, T: float) -> None:
+    if nsteps < 1:
+        raise ValueError("nsteps must be >= 1")
+    if N < 1:
+        raise ValueError("N must be >= 1")
+    if T <= 0:
+        raise ValueError("T must be > 0")
+
+
 def simulate_gbm_paths(
     S0: float,
     mu: float,
@@ -78,13 +87,7 @@ def simulate_gbm_paths(
 
     Retorna matriz (N, nsteps + 1) com S0 na coluna 0.
     """
-    if nsteps < 1:
-        raise ValueError("nsteps must be >= 1")
-    if N < 1:
-        raise ValueError("N must be >= 1")
-    if T <= 0:
-        raise ValueError("T must be > 0")
-
+    _validate_sim(nsteps, N, T)
     rng = np.random.default_rng(seed)
     dt = T / nsteps
     Z = rng.standard_normal(size=(N, nsteps))
@@ -93,3 +96,37 @@ def simulate_gbm_paths(
     S = S0 * np.exp(X)
     S0_col = np.full((N, 1), S0, dtype=float)
     return np.hstack([S0_col, S])
+
+
+def simulate_gbm_terminal(
+    S0: float,
+    mu: float,
+    sigma: float,
+    T: float,
+    nsteps: int,
+    N: int,
+    seed: int = 42,
+    chunk_size: int = 10_000,
+) -> NDArray[np.floating]:
+    """
+    Simula apenas S_T (sem guardar paths) em chunks — O(chunk × nsteps) memória.
+
+    Com o mesmo seed, `simulate_gbm_terminal(...)[i]` == `simulate_gbm_paths(...)[i, -1]`
+    (mesmo fluxo de RNG linha a linha).
+    """
+    _validate_sim(nsteps, N, T)
+    if chunk_size < 1:
+        raise ValueError("chunk_size must be >= 1")
+
+    rng = np.random.default_rng(seed)
+    dt = T / nsteps
+    drift = (mu - 0.5 * sigma**2) * dt
+    vol = sigma * np.sqrt(dt)
+    out = np.empty(N, dtype=float)
+
+    for start in range(0, N, chunk_size):
+        n = min(chunk_size, N - start)
+        Z = rng.standard_normal(size=(n, nsteps))
+        log_ST = np.log(S0) + drift * nsteps + vol * Z.sum(axis=1)
+        out[start : start + n] = np.exp(log_ST)
+    return out

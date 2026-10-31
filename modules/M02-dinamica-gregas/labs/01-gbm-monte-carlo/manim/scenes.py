@@ -13,30 +13,30 @@ Qualidade: -ql (rápido) | -qm | -qh (1080p)
 
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 
 import numpy as np
 from manim import *
 
-# --- path do pacote econofisica ---
-_ROOT = Path(__file__).resolve().parents[5]
-_SRC = _ROOT / "src"
-if str(_SRC) not in sys.path:
-    sys.path.insert(0, str(_SRC))
+from econofisica.bootstrap import ensure_src_on_path
 
+_ROOT = Path(__file__).resolve().parents[5]
+ensure_src_on_path(_ROOT)
+
+from econofisica.artifacts import load_lab_npz, resolve_artifact_path  # noqa: E402
 from econofisica.gbm import (  # noqa: E402
     gbm_ST_moments,
     gbm_ln_params,
     lognormal_pdf,
     simulate_gbm_paths,
+    simulate_gbm_terminal,
 )
+from econofisica.labs import M02_GBM  # noqa: E402
 
-# Parâmetros do lab (mesmos do run_lab.py)
-S0, MU, SIGMA, T, NSTEPS = 100.0, 0.08, 0.02, 1.0, 252
-SEED = 42
-# Para visual do túnel mais legível nas animações de path, usamos também σ_wide
-SIGMA_WIDE = 0.20
+CFG = M02_GBM
+S0, MU, SIGMA, T, NSTEPS = CFG.S0, CFG.mu, CFG.sigma, CFG.T, CFG.nsteps
+SEED = CFG.seed
+SIGMA_WIDE = CFG.sigma_wide
 
 BG = "#0f1419"
 ACCENT = "#3d9cf0"
@@ -48,6 +48,20 @@ WHITE = "#e8eef7"
 
 def _setup_dark(scene: Scene) -> None:
     scene.camera.background_color = BG
+
+
+def _load_ST() -> tuple[np.ndarray, float, float, float, float]:
+    """S_T + (m, v, mean_th, var_th). Prefere artifact do run_lab."""
+    m, v = gbm_ln_params(S0, MU, SIGMA, T)
+    mean_th, var_th = gbm_ST_moments(S0, MU, SIGMA, T)
+    art = resolve_artifact_path(CFG.artifact_path(_ROOT))
+    if art is not None:
+        data = load_lab_npz(art)
+        return data["ST"], float(data["m"][0]), float(data["v"][0]), mean_th, var_th
+    ST = simulate_gbm_terminal(
+        S0, MU, SIGMA, T, NSTEPS, CFG.N_max, seed=SEED, chunk_size=CFG.chunk_size
+    )
+    return ST, m, v, mean_th, var_th
 
 
 class GBMPathsScene(Scene):
@@ -133,10 +147,7 @@ class DensityConvergenceScene(Scene):
         header = VGroup(title, subtitle).arrange(DOWN, buff=0.15).to_edge(UP, buff=0.35)
         self.play(FadeIn(header))
 
-        m, v = gbm_ln_params(S0, MU, SIGMA, T)
-        mean_th, _ = gbm_ST_moments(S0, MU, SIGMA, T)
-        paths = simulate_gbm_paths(S0, MU, SIGMA, T, NSTEPS, 100_000, seed=SEED)
-        ST = paths[:, -1]
+        ST, m, v, mean_th, _ = _load_ST()
 
         s_min, s_max = float(np.percentile(ST, 0.2)), float(np.percentile(ST, 99.8))
         axes = Axes(
@@ -214,10 +225,20 @@ class MonteCarloConvergenceScene(Scene):
         header = VGroup(title, subtitle).arrange(DOWN, buff=0.15).to_edge(UP, buff=0.4)
         self.play(FadeIn(header))
 
-        mean_th, var_th = gbm_ST_moments(S0, MU, SIGMA, T)
-        paths = simulate_gbm_paths(S0, MU, SIGMA, T, NSTEPS, 100_000, seed=SEED)
-        ST = paths[:, -1]
-        Ns = np.array([1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 100_000])
+        ST, _, _, mean_th, var_th = _load_ST()
+        art = resolve_artifact_path(CFG.artifact_path(_ROOT))
+        if art is not None:
+            data = load_lab_npz(art)
+            Ns = data["sample_sizes"].astype(float)
+            # densificar com prefixos do ST salvo
+            Ns = np.unique(
+                np.concatenate(
+                    [Ns, np.array([2_000, 5_000, 20_000, 50_000], dtype=float)]
+                )
+            )
+            Ns = Ns[Ns <= len(ST)]
+        else:
+            Ns = np.array([1_000, 2_000, 5_000, 10_000, 20_000, 50_000, 100_000])
         err_mean = []
         err_var = []
         for N in Ns:
