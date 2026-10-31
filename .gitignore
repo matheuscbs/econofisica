@@ -10,9 +10,16 @@ env/
 .ipynb_checkpoints/
 outputs/
 figures/
+media/
+ManimCache/
 .DS_Store
 *.png
 !docs/**/*.png
 .env
 dist/
 build/
+*.mp4
+*.m4a
+*.pptx
+# keep intentional sample media under docs/assets if added later
+!docs/assets/**/*.png

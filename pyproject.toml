@@ -18,6 +18,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["jupyter>=1.0", "ipykernel>=6.25"]
+manim = ["manim>=0.18"]
 
 [project.urls]
 Homepage = "https://github.com/matheuscbs/econofisica"

@@ -20,3 +20,22 @@ O GBM é o modelo padrão de trajetória: log-preço gaussiano, preço log-norma
 2. Rodar `run_lab.py`  
 3. Variar `sigma` e observar a “abertura do túnel”  
 4. Seguir para gregas (próximo lab)
+
+## Conteúdo importado
+
+### Aulas
+
+- [A01-movimento-browniano-geometrico-o-modelo-padrao-de-trajetoria-de-preco](lessons/A01-movimento-browniano-geometrico-o-modelo-padrao-de-trajetoria-de-preco.md)
+- [A02-gregas-o-painel-de-risco-do-livro-de-opcoes](lessons/A02-gregas-o-painel-de-risco-do-livro-de-opcoes.md)
+- [A03-opcoes-exoticas-e-dependencia-de-trajetoria-quando-o-caminho-importa](lessons/A03-opcoes-exoticas-e-dependencia-de-trajetoria-quando-o-caminho-importa.md)
+
+### Estudo
+
+- [Overview do módulo](study/overview.md)
+- [Resumo executivo](study/resumo.md)
+- [Guia completo](study/guia-completo.md)
+- [Assets (mídia local)](study/ASSETS.md)
+
+### Labs
+
+- [01-gbm-monte-carlo](labs/01-gbm-monte-carlo/)

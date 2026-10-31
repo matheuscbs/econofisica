@@ -94,7 +94,22 @@ PYTHONPATH=src python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_la
 - Troque \(\mu\) por \(r=0.05\) (mundo risco-neutro) e compare \(\mathbb{E}[S_T]\).  
 - Estime IC 95% da média MC: \(\bar S_T \pm 1.96\cdot s/\sqrt{N}\).
 
+## Manim
+
+```bash
+source .venv/bin/activate
+export PYTHONPATH=src
+manim -pql manim/scenes.py GBMPathsScene
+manim -pql manim/scenes.py DensityConvergenceScene
+manim -pql manim/scenes.py MonteCarloConvergenceScene
+manim -pql manim/scenes.py Lab01Full
+```
+
+Detalhes: [`manim/README.md`](manim/README.md) · interpretação: [`RESULTS.md`](RESULTS.md)
+
 ## Arquivos
 
 - `run_lab.py` — execução + relatório de convergência  
+- `RESULTS.md` — como ler a tabela MC  
+- `manim/scenes.py` — 4 cenas animadas  
 - Implementação: `src/econofisica/gbm.py`
