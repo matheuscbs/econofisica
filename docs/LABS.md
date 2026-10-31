@@ -9,31 +9,28 @@ Cada lab vive em `modules/M0X-…/labs/<nn>-<slug>/` com:
 | `RESULTS.md` | como ler a saída |
 | `manim/` | animações (quando existir) |
 
-Código reutilizável → `src/econofisica/`.
+Código reutilizável → `src/econofisica/`. Config SoT → `src/econofisica/labs/`.
 
 ## Labs ativos
 
 | Módulo | Lab | Ideia-chave | Aula |
 |--------|-----|-------------|------|
-| [M01](../modules/M01-fundamentos) | [01 — Vendedor sem hedge](../modules/M01-fundamentos/labs/01-vendedor-sem-hedge) | Call vendida *naked*: cauda de perdas | M01.A02–A03 |
-| [M02](../modules/M02-dinamica-gregas) | [01 — GBM Monte Carlo](../modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo) | Momentos teóricos + convergência MC | M02.A01 |
+| [M01](../modules/M01-fundamentos) | [01 — GBM Monte Carlo](../modules/M01-fundamentos/labs/01-gbm-monte-carlo) | Momentos teóricos + convergência MC | **M01.A02** |
+| [M01](../modules/M01-fundamentos) | [02 — Vendedor sem hedge](../modules/M01-fundamentos/labs/02-vendedor-sem-hedge) | Call naked: cauda de perdas | **M01.A03** |
 
 ## Ordem sugerida de execução
 
 ```text
-M01 Lab 01  →  por que wait-and-see quebra
-M02 Lab 01  →  o motor GBM por baixo
-(próximo)   →  delta hedge dinâmico / BSM
+M01 Lab 01  →  motor GBM + validação MC          (A02)
+M01 Lab 02  →  por que wait-and-see quebra       (A03)
+M02 Lab …   →  túnel / sensores / gregas         (A01+)
 ```
 
 ## Convenção ao criar um lab novo
 
-1. Pasta `labs/NN-slug-kebab/`
-2. **SoT de parâmetros** em `src/econofisica/labs/<slug>.py` (`@dataclass` frozen)
-3. Importar de `src/econofisica` (não copiar GBM); preferir `simulate_gbm_terminal` quando só precisar de \(S_T\)
-4. `run_lab.py` salva `sim.npz` via `save_lab_npz`; Manim lê com `resolve_artifact_path` / `ECONOFISICA_ARTIFACT`
-5. `--plot` para PNG em `outputs/`
-6. Manim opcional, sem depender de LaTeX local
-7. Testes golden em `tests/` para fórmulas novas
-8. Linkar no README do módulo + neste índice
-9. Setup do aluno: `pip install -e .` (bootstrap de `src/` só como fallback)
+1. Pasta `labs/NN-slug-kebab/` alinhada à **lesson** do módulo  
+2. SoT em `src/econofisica/labs/<slug>.py`  
+3. Preferir `simulate_gbm_terminal` quando só precisar de \(S_T\)  
+4. `sim.npz` + Manim opcional  
+5. Testes golden em `tests/`  
+6. Atualizar este índice + README do módulo  

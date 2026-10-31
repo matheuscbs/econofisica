@@ -1,7 +1,7 @@
-# Lab 01 (M01) — Vendedor de call sem hedge (*wait-and-see*)
+# Lab 02 (M01) — Vendedor de call sem hedge (*wait-and-see*)
 
 **Módulo:** M01 · Fundamentos  
-**Aulas:** M01.A02 (preço mínimo) · M01.A03 (delta neutro)  
+**Aula:** [M01.A03](../../lessons/A03-delta-neutro-transformar-opiniao-direcional-em-risco-controlado.md) — delta neutro (pré-requisito: Lab 01 / A02)  
 **Nível:** introdutório  
 **Tempo:** ~25–40 min
 
@@ -40,15 +40,15 @@ P&L do vendedor naked: \(\text{pnl} = \text{prêmio} - \max(S_T-K,0)\).
 
 ```bash
 pip install -e ".[dev,manim]"
-python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
+python modules/M01-fundamentos/labs/02-vendedor-sem-hedge/run_lab.py --plot
 # grava outputs/.../sim.npz (SoT: econofisica.labs.M01_VENDEDOR)
 ```
 
 Manim (reusa `sim.npz` se existir):
 
 ```bash
-manim -pql modules/M01-fundamentos/labs/01-vendedor-sem-hedge/manim/scenes.py NakedSellerPnLScene
-manim -pql modules/M01-fundamentos/labs/01-vendedor-sem-hedge/manim/scenes.py PathsByMoneynessScene
+manim -pql modules/M01-fundamentos/labs/02-vendedor-sem-hedge/manim/scenes.py NakedSellerPnLScene
+manim -pql modules/M01-fundamentos/labs/02-vendedor-sem-hedge/manim/scenes.py PathsByMoneynessScene
 ```
 
 ## O que observar

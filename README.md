@@ -27,8 +27,8 @@ Detalhes: [`docs/curriculum.md`](docs/curriculum.md) · [`docs/trilhas.md`](docs
 
 | # | Módulo | Conteúdo | Lab |
 |---|--------|----------|-----|
-| [M01](modules/M01-fundamentos) | Fundamentos | 5 aulas + study | **Lab 01 vendedor sem hedge** |
-| [M02](modules/M02-dinamica-gregas) | Dinâmica e gregas | 3 aulas + study | **Lab 01 GBM + Manim** |
+| [M01](modules/M01-fundamentos) | Fundamentos | 5 aulas + study | **Labs 01 GBM + 02 vendedor** |
+| [M02](modules/M02-dinamica-gregas) | Dinâmica e gregas | 3 aulas + study | túnel/sensores (próximo) |
 | [M03](modules/M03-curva-juros) | Curva de juros | 3 aulas + study | — |
 | [M04](modules/M04-superficie-vol) | Superfície de vol | 6 aulas + study | — |
 | [M05](modules/M05-econofisica-entropia) | Entropia e risco | 4 aulas + study | — |
@@ -51,19 +51,18 @@ pip install -e ".[dev,manim]"   # pacote instalável — sem PYTHONPATH
 pytest -q
 ```
 
-### 1) M01 — Vendedor sem hedge (*wait-and-see*)
+### 1) M01 Lab 01 — GBM + convergência Monte Carlo (A02)
 
 ```bash
-python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
-# sim.npz gerado → Manim reutiliza (ou simula de novo se ausente)
-manim -pql modules/M01-fundamentos/labs/01-vendedor-sem-hedge/manim/scenes.py NakedSellerPnLScene
+python modules/M01-fundamentos/labs/01-gbm-monte-carlo/run_lab.py --plot
+manim -pql modules/M01-fundamentos/labs/01-gbm-monte-carlo/manim/scenes.py DensityConvergenceScene
 ```
 
-### 2) M02 — GBM + convergência Monte Carlo
+### 2) M01 Lab 02 — Vendedor sem hedge (A03)
 
 ```bash
-python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
-manim -pql modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py DensityConvergenceScene
+python modules/M01-fundamentos/labs/02-vendedor-sem-hedge/run_lab.py --plot
+manim -pql modules/M01-fundamentos/labs/02-vendedor-sem-hedge/manim/scenes.py NakedSellerPnLScene
 ```
 
 ## Estrutura do repositório
@@ -76,11 +75,10 @@ econofisica/
 │   ├── study/                  # overview · resumo · guia
 │   └── labs/…/manim/           # animações reproduzíveis
 ├── src/econofisica/            # biblioteca compartilhada
-├── scripts/import_course_from_vault.py
 └── NOTICE.md                   # proveniência educacional
 ```
 
-> Mídia pesada do vault (podcast/vídeo/slides ~1.3 GB) **não** entra no Git — preferimos Manim gerado a partir dos labs.
+> Mídia pesada do vault original (podcast/vídeo/slides) **não** entra no Git — preferimos Manim gerado a partir dos labs.
 
 ## Princípios
 

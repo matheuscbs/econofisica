@@ -1,4 +1,4 @@
-"""SoT — Lab M02.01 GBM + convergência Monte Carlo."""
+"""SoT — Lab M01.01 GBM + convergência Monte Carlo."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 @dataclass(frozen=True)
-class M02GbmConfig:
+class M01GbmConfig:
     S0: float = 100.0
     mu: float = 0.08
     sigma: float = 0.02
@@ -17,7 +17,7 @@ class M02GbmConfig:
     seed: int = 42
     # σ maior só para cena de túnel visual
     sigma_wide: float = 0.20
-    output_rel: str = "outputs/lab01-gbm"
+    output_rel: str = "outputs/lab-m01-gbm-monte-carlo"
     artifact_name: str = "sim.npz"
     n_paths_plot: int = 80
     chunk_size: int = 10_000
@@ -33,4 +33,4 @@ class M02GbmConfig:
         return max(self.sample_sizes)
 
 
-M02_GBM = M02GbmConfig()
+M01_GBM = M01GbmConfig()

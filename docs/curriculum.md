@@ -9,8 +9,8 @@ Grade em **10 módulos / ~32 lições**. Cada lição tem: conceito-núcleo · a
 | Aula | Título | Entregável |
 |------|--------|------------|
 | M01.A01 | Mapa do curso | Checklist pessoal + trilha |
-| M01.A02 | Preço mínimo de uma opção | Tabela call/put vs limites |
-| M01.A03 | Delta neutro | Simulação de rebalance Δ≈0 |
+| M01.A02 | Preço mínimo de uma opção | **Lab 01: GBM + Monte Carlo** |
+| M01.A03 | Delta neutro | **Lab 02: vendedor sem hedge** |
 | M01.A04 | Lema de Itô | Expansão em GBM + P&L hedged |
 | M01.A05 | Mundo risco-neutro e BSM | BSM call/put + IV invertida |
 
@@ -20,7 +20,7 @@ Grade em **10 módulos / ~32 lições**. Cada lição tem: conceito-núcleo · a
 
 | Aula | Título | Entregável |
 |------|--------|------------|
-| **M02.A01** | **GBM — trajetória padrão** | **Lab 01: Monte Carlo + convergência** |
+| M02.A01 | GBM — trajetória padrão | Túnel / sensores (próximo; motor em M01 Lab 01) |
 | M02.A02 | Gregas | Painel Δ, Γ, Θ, ν, ρ |
 | M02.A03 | Exóticas e path dependence | Spec de 1 barreira + riscos de hedge |
 

@@ -2,7 +2,7 @@
 Animações Manim — Lab M01.01 vendedor de call sem hedge.
 
   pip install -e ".[manim]"
-  python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py   # gera sim.npz
+  python modules/M01-fundamentos/labs/02-vendedor-sem-hedge/run_lab.py   # gera sim.npz
   export ECONOFISICA_ARTIFACT=outputs/lab-m01-vendedor-sem-hedge/sim.npz  # opcional
   manim -pql .../scenes.py NakedSellerPnLScene
 """
@@ -173,7 +173,7 @@ class LabM01SellerFull(Scene):
         _setup(self)
         intro = VGroup(
             Text("Econofísica · @mosscardoso", font_size=34, color=WHITE),
-            Text("M01 Lab 01 — Vendedor sem hedge", font_size=26, color=BLUE),
+            Text("M01 Lab 02 — Vendedor sem hedge", font_size=26, color=BLUE),
             Text("por que wait-and-see quebra", font_size=20, color=MUTED),
         ).arrange(DOWN, buff=0.3)
         self.play(FadeIn(intro))

@@ -2,23 +2,21 @@
 
 **Pergunta:** Como precificar e fazer hedge de opções vanila sem adivinhar o drift?
 
-## Lições
+## Lições → Labs
 
-| Aula | Tema |
-|------|------|
-| [A01](lessons/A01-mapa-do-curso-de-precificacao-a-alocacao-por-regime.md) | Mapa do curso |
-| [A02](lessons/A02-preco-minimo-de-uma-opcao-o-que-o-mercado-nao-pode-deixar-de-pagar.md) | Preço mínimo (no-arbitrage) |
-| [A03](lessons/A03-delta-neutro-transformar-opiniao-direcional-em-risco-controlado.md) | Delta neutro |
-| [A04](lessons/A04-lema-de-ito-por-que-o-hedge-continuo-gera-um-termo-extra-de-variancia.md) | Lema de Itô |
-| [A05](lessons/A05-mundo-risco-neutro-e-blackscholes-precificar-sem-prever-o-drift.md) | Mundo risco-neutro e BSM |
+| Aula | Tema | Lab |
+|------|------|-----|
+| [A01](lessons/A01-mapa-do-curso-de-precificacao-a-alocacao-por-regime.md) | Mapa do curso | — |
+| [A02](lessons/A02-preco-minimo-de-uma-opcao-o-que-o-mercado-nao-pode-deixar-de-pagar.md) | Dinâmica mínima (GBM) + momentos | **[01 — GBM Monte Carlo](labs/01-gbm-monte-carlo)** |
+| [A03](lessons/A03-delta-neutro-transformar-opiniao-direcional-em-risco-controlado.md) | Delta neutro / wait-and-see | **[02 — Vendedor sem hedge](labs/02-vendedor-sem-hedge)** |
+| [A04](lessons/A04-lema-de-ito-por-que-o-hedge-continuo-gera-um-termo-extra-de-variancia.md) | Lema de Itô | próximo |
+| [A05](lessons/A05-mundo-risco-neutro-e-blackscholes-precificar-sem-prever-o-drift.md) | Mundo risco-neutro e BSM | planejado |
 
-## Labs
+## Ordem sugerida
 
-| Lab | Status |
-|-----|--------|
-| [01 — Vendedor sem hedge](labs/01-vendedor-sem-hedge) | **ativo** — cauda de perdas *wait-and-see* |
-| 02 — Delta hedge dinâmico | próximo |
-| 03 — BSM + IV | planejado |
+1. Ler A02 → rodar **Lab 01** (teoria GBM + convergência MC)  
+2. Ler A03 → rodar **Lab 02** (por que vender naked quebra)  
+3. A04–A05 → próximos labs (Itô / BSM + IV / delta hedge)
 
 ## Estudo
 
@@ -26,11 +24,4 @@
 
 ## Pré-requisitos
 
-Esperança/variância, Python + NumPy. GBM detalhado também em [M02 Lab 01](../M02-dinamica-gregas/labs/01-gbm-monte-carlo).
-
-## Ordem sugerida
-
-1. Ler A02–A03  
-2. Rodar **Lab 01** (este módulo)  
-3. [M02 Lab 01](../M02-dinamica-gregas/labs/01-gbm-monte-carlo) se quiser aprofundar o motor GBM  
-4. Voltar para A04–A05 + próximo lab de hedge  
+Esperança/variância, Python + NumPy. Setup: `pip install -e ".[dev,manim]"`.

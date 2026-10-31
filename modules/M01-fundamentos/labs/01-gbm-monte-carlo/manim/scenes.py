@@ -3,7 +3,7 @@ Animações Manim — Lab 01 GBM + Monte Carlo (@mosscardoso / econofisica)
 
 Render (na raiz do repo, com .venv ativo):
 
-  manim -pqh modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/manim/scenes.py GBMPathsScene
+  manim -pqh modules/M01-fundamentos/labs/01-gbm-monte-carlo/manim/scenes.py GBMPathsScene
   manim -pqh .../scenes.py DensityConvergenceScene
   manim -pqh .../scenes.py MonteCarloConvergenceScene
   manim -pqh .../scenes.py Lab01Full  # sequência completa
@@ -31,9 +31,9 @@ from econofisica.gbm import (  # noqa: E402
     simulate_gbm_paths,
     simulate_gbm_terminal,
 )
-from econofisica.labs import M02_GBM  # noqa: E402
+from econofisica.labs import M01_GBM  # noqa: E402
 
-CFG = M02_GBM
+CFG = M01_GBM
 S0, MU, SIGMA, T, NSTEPS = CFG.S0, CFG.mu, CFG.sigma, CFG.T, CFG.nsteps
 SEED = CFG.seed
 SIGMA_WIDE = CFG.sigma_wide
@@ -354,7 +354,7 @@ class Lab01Full(Scene):
 
         end = VGroup(
             Text("Próximo: rode run_lab.py e as cenas Manim", font_size=26, color=WHITE),
-            Text("modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/", font_size=16, color=MUTED),
+            Text("modules/M01-fundamentos/labs/01-gbm-monte-carlo/", font_size=16, color=MUTED),
         ).arrange(DOWN, buff=0.3)
         self.play(FadeIn(end))
         self.wait(2)

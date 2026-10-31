@@ -1,4 +1,4 @@
-"""SoT — Lab M01.01 vendedor de call sem hedge."""
+"""SoT — Lab M01.02 vendedor de call sem hedge."""
 
 from __future__ import annotations
 

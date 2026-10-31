@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Lab M01.01 — Vendedor de call sem hedge (wait-and-see).
+Lab M01.02 — Vendedor de call sem hedge (wait-and-see).
 
 Uso (raiz do repo):
   pip install -e .
-  python modules/M01-fundamentos/labs/01-vendedor-sem-hedge/run_lab.py --plot
+  python modules/M01-fundamentos/labs/02-vendedor-sem-hedge/run_lab.py --plot
 """
 
 from __future__ import annotations
@@ -159,7 +159,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    print("Lab M01.01 — Vendedor sem hedge  |  @mosscardoso / econofisica")
+    print("Lab M01.02 — Vendedor sem hedge  |  @mosscardoso / econofisica")
     paths, ST, payoffs, pnl = simulate()
     report(ST, payoffs, pnl)
 

@@ -30,7 +30,7 @@ Foco: entropia, caudas, covariância, regimes. Labs prioritários: entropia, Lya
 
 | Semana | Entrega |
 |--------|---------|
-| 1 | Setup + Lab 01 (GBM) |
+| 1 | Setup + M01 Lab 01 (GBM) + Lab 02 (vendedor) |
 | 2–3 | M01 completo (teoria + 1 notebook BSM) |
 | 4 | Gregas + 1 estrutura |
 | 5+ | Seguir a trilha escolhida |

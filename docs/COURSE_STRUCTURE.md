@@ -22,8 +22,7 @@ econofisica/
 │               ├── run_lab.py
 │               └── manim/    # animações do lab
 ├── src/econofisica/          # biblioteca compartilhada
-└── scripts/
-    └── import_course_from_vault.py
+└── NOTICE.md                 # proveniência educacional
 ```
 
 ## O que entra no Git
@@ -42,9 +41,3 @@ econofisica/
 3. `study/resumo.md` — visão rápida  
 4. `labs/…/run_lab.py` — validação numérica  
 5. `labs/…/manim/` — animação do resultado  
-
-## Reimportar do vault
-
-```bash
-python scripts/import_course_from_vault.py
-```

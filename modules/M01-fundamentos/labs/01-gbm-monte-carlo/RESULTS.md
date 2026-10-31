@@ -30,7 +30,7 @@ Com \(\sigma=0{,}02\) o túnel é estreito: quase toda a massa de \(S_T\) fica p
 
 ## Figuras estáticas
 
-Geradas por `run_lab.py --plot` em `outputs/lab01-gbm/` (gitignored):
+Geradas por `run_lab.py --plot` em `outputs/lab-m01-gbm-monte-carlo/` (gitignored):
 
 - `gbm_paths.png` — envelope das trajetórias  
 - `gbm_ST_density.png` — histograma + pdf  

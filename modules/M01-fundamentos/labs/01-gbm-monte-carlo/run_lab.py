@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Lab M02.01 — GBM: parâmetros teóricos + convergência Monte Carlo.
+Lab M01.01 — GBM: parâmetros teóricos + convergência Monte Carlo.
 
 Uso:
   pip install -e .
-  python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
+  python modules/M01-fundamentos/labs/01-gbm-monte-carlo/run_lab.py --plot
 """
 
 from __future__ import annotations
@@ -26,9 +26,9 @@ from econofisica.gbm import (  # noqa: E402
     simulate_gbm_paths,
     simulate_gbm_terminal,
 )
-from econofisica.labs import M02_GBM  # noqa: E402
+from econofisica.labs import M01_GBM  # noqa: E402
 
-CFG = M02_GBM
+CFG = M01_GBM
 _ROOT = Path(__file__).resolve().parents[4]
 
 
@@ -45,7 +45,7 @@ def run_theory() -> tuple[float, float, float, float]:
     mean_th, var_th = gbm_ST_moments(CFG.S0, CFG.mu, CFG.sigma, CFG.T)
     print(
         f"S0={CFG.S0}, μ={CFG.mu}, σ={CFG.sigma}, T={CFG.T}  "
-        f"(SoT: econofisica.labs.M02_GBM)"
+        f"(SoT: econofisica.labs.M01_GBM)"
     )
     print(f"log-preço:  m = {m:.8f}")
     print(f"            v = {v:.8f}  (std = {np.sqrt(v):.8f})")
@@ -183,7 +183,7 @@ def maybe_plot(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Lab M02.01 — GBM Monte Carlo")
+    parser = argparse.ArgumentParser(description="Lab M01.01 — GBM Monte Carlo")
     parser.add_argument("--plot", action="store_true")
     parser.add_argument("--save-artifact", action="store_true", default=True)
     parser.add_argument("--no-save-artifact", action="store_false", dest="save_artifact")

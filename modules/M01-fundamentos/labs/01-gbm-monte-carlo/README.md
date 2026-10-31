@@ -1,7 +1,7 @@
-# Lab 01 — GBM: parâmetros teóricos e convergência Monte Carlo
+# Lab 01 (M01) — GBM: parâmetros teóricos e convergência Monte Carlo
 
-**Módulo:** M02 · Dinâmica e gregas  
-**Aula:** M02.A01 — Movimento browniano geométrico  
+**Módulo:** M01 · Fundamentos  
+**Aula:** [M01.A02](../../lessons/A02-preco-minimo-de-uma-opcao-o-que-o-mercado-nao-pode-deixar-de-pagar.md) — dinâmica mínima (GBM)  
 **Nível:** introdutório  
 **Tempo:** ~30–45 min
 
@@ -71,9 +71,9 @@ $$
 
 ```bash
 pip install -e ".[dev,manim]"
-python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
+python modules/M01-fundamentos/labs/01-gbm-monte-carlo/run_lab.py --plot
 # S_T via simulate_gbm_terminal (chunks); sim.npz para Manim
-# SoT: econofisica.labs.M02_GBM
+# SoT: econofisica.labs.M01_GBM
 ```
 
 ## O que observar
@@ -91,12 +91,8 @@ python modules/M02-dinamica-gregas/labs/01-gbm-monte-carlo/run_lab.py --plot
 ## Manim
 
 ```bash
-source .venv/bin/activate
-export PYTHONPATH=src
-manim -pql manim/scenes.py GBMPathsScene
-manim -pql manim/scenes.py DensityConvergenceScene
-manim -pql manim/scenes.py MonteCarloConvergenceScene
-manim -pql manim/scenes.py Lab01Full
+# na raiz do repo, com .venv ativo
+manim -pql modules/M01-fundamentos/labs/01-gbm-monte-carlo/manim/scenes.py Lab01Full
 ```
 
 Detalhes: [`manim/README.md`](manim/README.md) · interpretação: [`RESULTS.md`](RESULTS.md)
