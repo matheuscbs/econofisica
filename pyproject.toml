@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "econofisica"
+version = "0.1.0"
+description = "Curso open-source de econofísica aplicada a mercados — @mosscardoso"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Matheus Cardoso", email = "matheuscbsmsn1994@gmail.com" }]
+keywords = ["econophysics", "quant", "GBM", "monte-carlo", "finance"]
+dependencies = [
+  "numpy>=1.24",
+  "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = ["jupyter>=1.0", "ipykernel>=6.25"]
+
+[project.urls]
+Homepage = "https://github.com/matheuscbs/econofisica"
+Repository = "https://github.com/matheuscbs/econofisica"
+Instagram = "https://instagram.com/mosscardoso"
+
+[tool.setuptools.packages.find]
+where = ["src"]
